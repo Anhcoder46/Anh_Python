@@ -25,6 +25,7 @@ Frontend:
 Database:
  Lưu trữ dữ liệu thực
  Không được dùng dữ liệu hard-code
+<img width="1919" height="1018" alt="image" src="https://github.com/user-attachments/assets/c4c68d58-8b0c-4940-9a7b-a01cde47e221" />
 
 3. GIT
  Tạo repository riêng

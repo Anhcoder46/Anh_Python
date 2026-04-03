@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: devops_db
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: miniproject
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # Map file init.sql vào container để tự động tạo bảng
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build: ./backend
+    container_name: devops_backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=${PORT}
+      - APP_NAME=${APP_NAME}
+      - DB_URL=${DB_URL}
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: devops_frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

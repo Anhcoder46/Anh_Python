@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Mini Project - Đức Anh</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        input, button { padding: 10px; margin-top: 10px; }
+        ul { list-style-type: none; padding: 0; }
+        li { background: #f4f4f4; margin: 5px 0; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Quản lý người dùng</h2>
+        
+        <form id="userForm">
+            <input type="text" id="nameInput" placeholder="Nhập tên người dùng..." required>
+            <button type="submit">Thêm người dùng</button>
+        </form>
+
+        <h3>Danh sách (Dữ liệu từ Database)</h3>
+        <ul id="userList"></ul>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api/users';
+
+        // Lấy dữ liệu (GET API)
+        async function fetchUsers() {
+            const response = await fetch(API_URL);
+            const users = await response.json();
+            const list = document.getElementById('userList');
+            list.innerHTML = '';
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.textContent = `ID: ${user.id} - Tên: ${user.name}`;
+                list.appendChild(li);
+            });
+        }
+
+        // Gửi dữ liệu (POST API)
+        document.getElementById('userForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nameInput = document.getElementById('nameInput');
+            await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: nameInput.value })
+            });
+            nameInput.value = '';
+            fetchUsers(); // Cập nhật lại danh sách
+        });
+
+        // Load dữ liệu khi mở trang
+        fetchUsers();
+    </script>
+</body>
+</html>

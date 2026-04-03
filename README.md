@@ -194,15 +194,25 @@ Environment Variables:
 
 6. DOCKER
  Dockerfile cho Backend
+<img width="1486" height="729" alt="image" src="https://github.com/user-attachments/assets/c52f3fe6-ff86-4bb2-b090-12fcd17a9ac7" />
+
  Dockerfile cho Frontend
+<img width="1481" height="741" alt="image" src="https://github.com/user-attachments/assets/012bd791-a306-4089-97ab-a4ef8d2484ce" />
+
  Database chạy container riêng
-7. DOCKER COMPOSE
+<img width="1482" height="718" alt="image" src="https://github.com/user-attachments/assets/b280e616-1713-489c-8cd4-456f5405be7c" />
+
+8. DOCKER COMPOSE
  Có docker-compose.yml
  Chạy được Backend + Frontend + Database
-8. DOCKER HUB
+<img width="1432" height="661" alt="image" src="https://github.com/user-attachments/assets/150f4558-124d-42bb-8fd6-b313385072b8" />
+
+9. DOCKER HUB
  Build image Backend + Frontend
  Push lên Docker Hub
-9. SẢN PHẨM NỘP
+<img width="1919" height="1015" alt="image" src="https://github.com/user-attachments/assets/b33a2d66-0db1-401a-a340-9b1518b7c296" />
+
+10. SẢN PHẨM NỘP
 Phần A: Thông tin chung
  Thông tin sinh viên
  Giới thiệu ứng dụng
